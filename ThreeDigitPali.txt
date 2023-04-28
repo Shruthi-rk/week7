@@ -1,0 +1,48 @@
+import java.util.*;
+public class Collect2
+  {
+    public static void main (String args[])
+    {
+      try
+        {
+      Scanner sc=new Scanner(System.in);
+      int palicount=0;
+      ArrayList<Integer> b=new ArrayList<Integer>();
+      for(int i=0;i<10;i++)
+        {
+          System.out.println("Enter the number "+(i+1));
+          int a=sc.nextInt();
+          if(a>99 && a<1000)
+          {
+          b.add(a);
+          }
+          else
+          {
+            i--;
+          }
+        }
+        System.out.println(b);
+        System.out.println("Palindrome numbers are.......");
+          for(Integer o:b)
+          {
+           int rev=0,n=o;
+           while(n!=0)
+           {
+           int rem=n%10;
+           rev=rev*10+rem;
+           n=n/10;
+           }
+          if(o==rev)
+          {
+            System.out.println(" "+rev);
+            palicount++;
+          }
+          }
+        System.out.println("The palindrome count is :"+palicount);
+        }
+      catch(Exception e)
+        {
+          System.out.println(e);
+        }
+    }
+  }
