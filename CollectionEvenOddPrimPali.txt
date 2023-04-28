@@ -1,0 +1,88 @@
+import java.util.*;
+public class CollectEven
+  {
+    public static void main (String args[])
+    {
+      try
+        {
+      Scanner sc=new Scanner(System.in);
+      int oddcount=0,evencount=0,primcount=0,palicount=0;
+      ArrayList<Integer> b=new ArrayList<Integer>();
+      for(int i=0;i<10;i++)
+        {
+          System.out.println("Enter the number "+(i+1));
+          int a=sc.nextInt();
+          b.add(a);
+        }
+        b.add(20);
+        b.add(1);
+        b.remove(5);
+        System.out.println(b);
+        System.out.println("Even numbers are....");
+        for(Integer o: b)
+          {
+            if(o%2==0)
+            {
+              System.out.print(" "+o);
+              evencount++;
+            }
+          }
+        System.out.println();
+        System.out.println("Odd numbers are....");
+        for(Integer o: b)
+          {
+            if(o%2!=0)
+            {
+              System.out.print(" "+o);
+              oddcount++;
+            }
+          }
+        System.out.println();
+        System.out.println("Prime numbers are .......");
+        for(Integer o:b)
+        {
+        boolean isprime=true;
+          for(int j=2;j<o;j++)
+            {
+              if(o%j==0)
+              {
+                isprime=false;
+                break;
+              }
+            }
+          if(isprime && o>1)
+          {
+             System.out.print(" "+o);
+             primcount++;
+          }
+        }
+        System.out.println();
+        System.out.println("Palindrome numbers are.......");
+          for(Integer o:b)
+          {
+           int rev=0,n=o;
+           while(n!=0)
+           {
+           int rem=n%10;
+           rev=rev*10+rem;
+           n=n/10;
+           }
+          if(o==rev && o>10)
+          {
+            System.out.print(" "+rev);
+            palicount++;
+          }
+         }
+        System.out.println();
+        System.out.println("The count of even numbers: "+evencount);
+        System.out.println("The count of odd numbers: "+oddcount);
+        System.out.println("The count of prime numbers: "+primcount);
+        System.out.println("The count of palindrome numbers: "+palicount);
+        }
+      catch(Exception e)
+        {
+          System.out.println(e);
+        }
+  }
+  }
+        
