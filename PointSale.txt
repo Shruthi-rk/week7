@@ -1,0 +1,100 @@
+/*Create a class called "Product" that represents a product. The class should have properties such as name, price, and quantity, and methods such as getName, getPrice and getQuantity. Create another class called "PointOfSale" that represents a point of sale system. The class should have a list of products, and methods such as addProduct, removeProduct, and getTotalCost.*/
+import java.util.*;
+class Product2
+  {
+    String name;
+    double price;
+    int quantity;
+    public Product2(String name,double price,int quantity)
+    {
+      this.name=name;
+      this.price=price;
+      this.quantity=quantity;
+    }
+  }
+class Point
+  {
+   ArrayList<Product2> pro=new ArrayList<Product2>();
+   public void addd(Product2 p)
+  {
+    pro.add(p);
+  }
+  public void rem(Product2 p)
+  {
+    pro.remove(p);
+  }
+  public void display()
+  {
+    System.out.println("product added to cart are ");
+    for(Product2 p:pro)
+      {
+        System.out.println(p.name +" " +p.price +" "+p.quantity);
+      }
+  }
+  public void totalCost()
+  {
+    double total=0;
+    for(Product2 p:pro)
+      {
+        total=total+p.price;
+        System.out.println("Cost of "+p.name+" " +total);
+      }
+  }
+}
+public class PointSale
+{
+  Scanner s=new Scanner(System.in);
+  Point obj=new Point();
+  public void viewopt()
+  {
+    int opt=0;
+    do
+      {
+        System.out.println("Choose your option");
+        System.out.println("1.ADD PRODUCT........");
+        System.out.println("2.REMOVE PRODUCT.....");
+        System.out.println("3.GET TOTAL COST.....");
+        System.out.println("0.EXIT............");
+        System.out.println("Enter your option number");
+        opt=s.nextInt();
+        switch(opt)
+          {
+            case 1:System.out.println("Enter the product name");
+                   String name=s.next();
+                   System.out.println("Enter product price");
+                   double price=s.nextDouble();
+                   System.out.println("Enter product quantity");
+                   int quantity=s.nextInt();
+                   Product2 p=new Product2(name,price,quantity);
+                   obj.addd(p);
+                   break;
+            case 2:if(obj.pro.isEmpty())
+                  {
+                    System.out.println("No products found");
+                  }
+                  else
+                   {
+                   System.out.println("Enter the product name");
+                   String name=s.next();
+                   System.out.println("Enter product price");
+                   price=s.nextDouble();
+                   System.out.println("Enter product quantity");
+                   quantity=s.nextInt();
+                   p=new Product2(name,price,quantity);
+                   obj.rem(p);
+                   System.out.println("Item removed successfully");
+                   break;
+                   }
+            case 3:obj.totalCost();
+                   break;
+            default:System.out.println("Enter valid option");
+                    break;
+                    }
+      }while(opt!=0);
+  }
+    public static void main(String[] args) 
+    {
+        PointSale ps=new PointSale();
+        ps.viewopt();
+    }
+}
