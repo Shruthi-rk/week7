@@ -1,0 +1,41 @@
+import java.util.*;
+public class RotateShift
+  {
+    public static void main(String args[])
+    {
+     try
+       {
+      Scanner s=new Scanner(System.in);
+      System.out.println("Enter len");
+      int len=s.nextInt();
+      //int a[]=new int[len];
+      ArrayList<Integer> b=new ArrayList<Integer>();
+      for(int i=0;i<len;i++)
+        {
+          System.out.println("Enter the number"+(i+1));
+          int a=s.nextInt();
+          b.add(a);
+        }
+      System.out.println(b);
+      System.out.println("Enter the target value");
+      int t=s.nextInt();
+      ArrayList<Integer> c=new ArrayList<Integer>();
+      for(int i=0;i<len;i++)
+        {
+          int index=(i+t-len)%len;
+        if(index<0)
+          {
+           index=index+len;//-1+5=4
+         }
+          c.add(b.get(index));//-1 0 1 4 3 
+        }
+      for(int i=0;i<len;i++)
+        {
+          System.out.println(c.get(i));
+        }
+    }catch(Exception e)
+       {
+         System.out.println(e);
+       }
+  }
+  }
